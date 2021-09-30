@@ -30,22 +30,23 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   let name = `<h1>${variables.name} ${variables.lastname}</h1>`;
-  if (variables.name == null && variables.lastname == null) name = `<h1></h1>`;
+  if (variables.name == null && variables.lastname == null)
+    name = `<h1 style="white-space: nowrap;">Name and Last Name</h1>`;
   else if (variables.name != null && variables.lastname == null)
-    name = `<h1>${variables.name}</h1>`;
+    name = `<h1 style="white-space: nowrap;">${variables.name} Last Name</h1>`;
   else if (variables.name == null && variables.lastname != null)
-    name = `<h1>${variables.lastname}</h1>`;
+    name = `<h1 style="white-space: nowrap;">Name ${variables.lastname}</h1>`;
 
   let role = `<h2>${variables.role}</h2>`;
-  if (variables.role == null) role = `<h2></h2>`;
+  if (variables.role == null) role = `<h2>Role</h2>`;
 
   let location = `<h3>${variables.city}, ${variables.country}</h3>`;
   if (variables.city == null && variables.country == null)
-    location = `<h3></h3>`;
+    location = `<h3>City, Country</h3>`;
   else if (variables.city != null && variables.country == null)
-    location = `<h3>${variables.city}</h3>`;
+    location = `<h3>${variables.city}, Country</h3>`;
   else if (variables.city == null && variables.country != null)
-    location = `<h3>${variables.country}</h3>`;
+    location = `<h3>City, ${variables.country}</h3>`;
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
